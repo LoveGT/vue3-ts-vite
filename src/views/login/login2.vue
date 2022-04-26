@@ -29,7 +29,7 @@
 					/></template>
 				</el-input>
 			</el-form-item>
-			<el-form-item prop="code" v-if="captchaOnOff">
+			<el-form-item v-if="captchaOnOff" prop="code">
 				<el-input
 					v-model="loginForm.code"
 					size="large"
@@ -43,7 +43,7 @@
 					/></template>
 				</el-input>
 				<div class="login-code">
-					<img :src="codeUrl" @click="getCode" class="login-code-img" />
+					<img :src="codeUrl" class="login-code-img" @click="getCode" />
 				</div>
 			</el-form-item>
 			<el-checkbox v-model="loginForm.rememberMe" style="margin: 0px 0px 25px 0px"
@@ -60,7 +60,7 @@
 					<span v-if="!loading">登 录</span>
 					<span v-else>登 录 中...</span>
 				</el-button>
-				<div style="float: right" v-if="register">
+				<div v-if="register" style="float: right">
 					<router-link class="link-type" :to="'/register'">立即注册</router-link>
 				</div>
 			</el-form-item>
@@ -103,7 +103,7 @@ export default defineComponent({
 		}
 
 		const handleLogin = () => {
-			loginRef.value?.validate(valid => {
+			loginRef.value?.validate((valid) => {
 				if (valid) {
 					console.log('登录')
 					store.dispatch('login/loginAction', { ...loginForm })

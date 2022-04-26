@@ -36,7 +36,6 @@ export const useIndexStore = defineStore('index', {
 	 */
 	actions: {
 		countChange(val) {
-			console.log(val, 'actions中的参数--->>>>')
 			this.count++
 			this.quantity++
 

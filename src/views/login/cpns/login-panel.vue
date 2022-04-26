@@ -1,7 +1,7 @@
 <template>
 	<div class="login-panel">
 		<h2 class="title">Bison管理系统平台</h2>
-		<el-tabs type="border-card" stretch v-model="currentTab">
+		<el-tabs v-model="currentTab" type="border-card" stretch>
 			<el-tab-pane name="account">
 				<template #label>
 					<span
