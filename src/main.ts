@@ -8,21 +8,33 @@ import ElementPlus from 'element-plus'
 import locale from 'element-plus/lib/locale/lang/zh-cn' // 中文语言
 import router from './router'
 import hyRequest from './service'
-
-hyRequest.request({
-	url: '/home/multidata',
-	method: 'GET',
-	interceptors: {
-		requestInterceptor: (config) => {
-			console.log('单独请求的成功拦截')
-			return config
-		},
-		responseInterceptor: (response) => {
-			console.log('单独响应的成功拦截')
-			return response
+interface DataType {
+	data: any
+	returnCode: string
+	success: boolean
+}
+hyRequest
+	.request<DataType>({
+		url: '/home/multidata',
+		method: 'GET',
+		interceptors: {
+			requestInterceptor: (config) => {
+				console.log('单独请求的成功拦截')
+				return config
+			},
+			responseInterceptor: (response) => {
+				console.log('单独响应的成功拦截')
+				return response
+			}
 		}
-	}
+	})
+	.then((res) => {
+		console.log(res)
+	})
+hyRequest.get<DataType>({
+	url: '/home/multidata'
 })
+
 import App from './App.vue'
 import '@/assets/styles/tailwindcss.css'
 // 初始化样式

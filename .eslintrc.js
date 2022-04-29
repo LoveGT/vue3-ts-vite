@@ -25,7 +25,6 @@ module.exports = {
 	// eslint-plugin-vue @typescript-eslint/eslint-plugin eslint-plugin-prettier的缩写
 	plugins: ['vue', '@typescript-eslint', 'prettier'],
 	rules: {
-		useTabs: true,
 		'@typescript-eslint/ban-ts-ignore': 'off',
 		'@typescript-eslint/no-unused-vars': 'off',
 		'@typescript-eslint/explicit-function-return-type': 'off',
