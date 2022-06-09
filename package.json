@@ -15,20 +15,27 @@
 	},
 	"dependencies": {
 		"@element-plus/icons-vue": "^1.1.4",
+		"@vueuse/core": "^8.4.2",
 		"autoprefixer": "^10.4.5",
 		"axios": "^0.26.1",
 		"element-plus": "^2.1.10",
 		"js-cookie": "^3.0.1",
+		"mockjs": "^1.1.0",
 		"normalize.css": "^8.0.1",
 		"nprogress": "^0.2.0",
 		"pinia": "^2.0.13",
+		"pinia-plugin-persist": "^1.0.0",
 		"postcss": "^8.4.12",
 		"tailwindcss": "^3.0.24",
+		"vite-plugin-mock": "^2.9.6",
+		"vite-plugin-vue-setup-extend": "^0.4.0",
 		"vue": "^3.2.25",
+		"vue-cropper": "^1.0.3",
+		"vue-i18n": "^9.1.10",
 		"vue-router": "^4.0.14"
 	},
 	"devDependencies": {
-		"@types/node": "^17.0.26",
+		"@types/node": "^17.0.30",
 		"@types/nprogress": "^0.2.0",
 		"@typescript-eslint/eslint-plugin": "^5.20.0",
 		"@typescript-eslint/parser": "^5.20.0",
@@ -52,6 +59,7 @@
 		"unplugin-vue-components": "^0.19.3",
 		"vite": "^2.9.5",
 		"vite-plugin-compression": "^0.5.1",
+		"vite-plugin-svg-icons": "^2.0.1",
 		"vue-tsc": "^0.34.7"
 	},
 	"husky": {

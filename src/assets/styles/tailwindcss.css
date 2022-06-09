@@ -1,3 +1,44 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+	:root {
+		/* 文字 */
+		--color-text-base: #ffffff;
+		--color-text-muted: #c7d2fe;
+		--color-text-inverted: #4f46e5;
+		/* 背景 */
+		--color-fill: #4338ca;
+		/* 按钮 */
+		--color-button-accent: #ffffff;
+		--color-button-accent-hover: #eef2ff;
+		--color-button-muted: 0, 0, 0;
+	}
+	/* 黑暗主题 */
+	.theme-dark {
+		/* 文字 */
+		--color-text-base: #ffffff;
+		--color-text-muted: #fecaca;
+		--color-text-inverted: #dc2626;
+		/* 背景 */
+		--color-fill: #b91b1b;
+		/* 按钮 */
+		--color-button-accent: #ffffff;
+		--color-button-accent-hover: #eef2ff;
+		--color-button-muted: 239, 68, 68;
+	}
+	/* 亮白主题 */
+	.theme-light {
+		/* 文字 */
+		--color-text-base: #111802;
+		--color-text-muted: #2f4306;
+		--color-text-inverted: #ebfacc;
+		/* 背景 */
+		--color-fill: #b3ff17;
+		/* 按钮 */
+		--color-button-accent: #243403;
+		--color-button-accent-hover: #37fd05;
+		--color-button-muted: 212, 255, 0;
+	}
+}

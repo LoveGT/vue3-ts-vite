@@ -1,27 +1,28 @@
-import { createRouter, createWebHashHistory } from 'vue-router'
-import type { HYRouteRecordRaw } from './type'
+import { createRouter, createWebHistory } from 'vue-router'
+import type { HYRouteRecordRaw } from './types'
 
 import Layout from '../layout/index.vue'
 
-const routes: HYRouteRecordRaw[] = [
+export const constantRoutes: HYRouteRecordRaw[] = [
 	{
 		path: '/redirect',
 		component: Layout,
 		hidden: true,
 		children: [
 			{
-				path: '/redirect/:path(.*)',
+				path: '/redirect/:pathMatch(.*)',
 				component: () => import('@/views/redirect/index.vue')
 			}
 		]
 	},
 	{
 		path: '/login',
+		name: 'login',
 		hidden: true,
-		component: () => import(/* webpackChunkName: "login" */ '@/views/login/login.vue')
+		component: () => import('@/views/login/login.vue')
 	},
 	{
-		path: '/404',
+		path: '/:pathMatch(.*)*',
 		component: () => import('@/views/errorPage/404.vue'),
 		hidden: true
 	},
@@ -33,24 +34,35 @@ const routes: HYRouteRecordRaw[] = [
 	{
 		path: '',
 		component: Layout,
-		redirect: 'index',
+		redirect: '/index',
 		hidden: true,
-		meta: { hidden: true },
 		children: [
 			{
-				path: 'index',
+				path: '/index',
 				component: () =>
-					import(/* webpackChunkName: "dashboard" */ '@/views/dashboard/dashboard.vue'),
-				name: 'dashboard',
-				meta: { title: 'dashboard', icon: 'dashboard', affix: true }
+					import(/* webpackChunkName: "dashboard" */ '@/views/index.vue'),
+				name: 'index',
+				meta: {
+					title: 'dashboard',
+					icon: 'dashboard',
+					affix: true,
+					name: 'index'
+				}
 			}
 		]
 	}
 ]
 
 const router = createRouter({
-	routes,
-	history: createWebHashHistory()
+	routes: constantRoutes,
+	history: createWebHistory(),
+	scrollBehavior(to, from, savePositiong) {
+		if (savePositiong) {
+			return savePositiong
+		} else {
+			return { top: 0 }
+		}
+	}
 })
 
 export default router

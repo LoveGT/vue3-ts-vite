@@ -5,9 +5,6 @@ import type { HyRequsetConfig, HYRequestInterceptor } from './types'
 import { ElLoading } from 'element-plus'
 import { LoadingInstance } from 'element-plus/lib/components/loading/src/loading'
 
-import NProgress from 'nprogress'
-import 'nprogress/nprogress.css'
-
 const DEFAULT_LOADING = true
 
 class HyRequset {
@@ -34,9 +31,7 @@ class HyRequset {
 		// 2.全局拦截器
 		this.instance.interceptors.request.use(
 			(config) => {
-				console.log('全局请求拦截成功')
 				if (this.showLoading) {
-					NProgress.start()
 					this.loading = ElLoading.service({
 						lock: true,
 						text: 'Loading',
@@ -47,18 +42,13 @@ class HyRequset {
 				return config
 			},
 			(error) => {
-				console.log('全局请求拦截失败')
 				return error
 			}
 		)
 
 		this.instance.interceptors.response.use(
 			(response) => {
-				console.log('全局响应拦截成功')
-
 				this.loading?.close()
-				NProgress.done()
-
 				const data = response.data
 				if (data?.returnCode === '-1001') {
 					console.log('请求失败，错误信息')
@@ -68,8 +58,6 @@ class HyRequset {
 			},
 			(error) => {
 				this.loading?.close()
-				NProgress.done()
-				console.log('全局响应拦截失败')
 				if (error.response.status === 404) {
 					console.log('404错误')
 				}
@@ -96,7 +84,6 @@ class HyRequset {
 					if (config.interceptors?.responseInterceptor) {
 						response = config.interceptors.responseInterceptor(response)
 					}
-					console.log(response, 'response')
 					this.showLoading = DEFAULT_LOADING
 					resolve(response)
 				})

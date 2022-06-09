@@ -37,10 +37,12 @@ module.exports = {
 		'@typescript-eslint/no-non-null-assertion': 'off',
 		'@typescript-eslint/explicit-module-boundary-types': 'off',
 		'prettier/prettier': 'error',
+		'vue/multi-word-component-names': 'off', //禁止命名方式必须要多单词
+		'vue/component-definition-name-casing': 'off', // 禁止名字只能为首字母大写的方式
 		// 禁止出现console
-		'no-console': 'warn',
+		'no-console': 'off',
 		// 禁用debugger
-		'no-debugger': 'warn',
+		'no-debugger': 'off',
 		// 禁止出现重复的 case 标签
 		'no-duplicate-case': 'warn',
 		// 禁止出现空语句块
@@ -60,13 +62,13 @@ module.exports = {
 		// 要求使用 === 和 !==
 		eqeqeq: 'warn',
 		// 禁止 if 语句中 return 语句之后有 else 块
-		'no-else-return': 'warn',
+		'no-else-return': 'off',
 		// 禁止出现空函数
 		'no-empty-function': 'warn',
 		// 禁用不必要的嵌套块
 		'no-lone-blocks': 'warn',
 		// 禁止使用多个空格
-		'no-multi-spaces': 'off',
+		'no-multi-spaces': 'warn',
 		// 禁止多次声明同一变量
 		'no-redeclare': 'warn',
 		// 禁止在 return 语句中使用赋值语句
@@ -90,7 +92,7 @@ module.exports = {
 		// 强制在代码块中使用一致的大括号风格
 		'brace-style': 'warn',
 		// 强制使用骆驼拼写法命名约定
-		camelcase: 'warn',
+		camelcase: 'off',
 		// 强制使用一致的缩进
 		indent: 'off',
 		// 强制在 JSX 属性中一致地使用双引号或单引号
@@ -104,7 +106,7 @@ module.exports = {
 		// 强制函数块最多允许的的语句数量20
 		'max-statements': ['warn', 100],
 		// 强制回调函数最大嵌套深度
-		'max-nested-callbacks': ['warn', 3],
+		'max-nested-callbacks': ['off', 3],
 		// 强制函数定义中最多允许的参数数量
 		'max-params': ['warn', 3],
 		// 强制每一行中所允许的最大语句数量
@@ -112,7 +114,7 @@ module.exports = {
 		// 要求方法链中每个调用都有一个换行符
 		'newline-per-chained-call': ['warn', { ignoreChainWithDepth: 3 }],
 		// 禁止 if 作为唯一的语句出现在 else 语句中
-		'no-lonely-if': 'warn',
+		'no-lonely-if': 'off',
 		// 禁止空格和 tab 的混合缩进
 		'no-mixed-spaces-and-tabs': 'off',
 		// 禁止出现多行空行
@@ -150,6 +152,9 @@ module.exports = {
 		defineProps: 'readonly',
 		defineEmits: 'readonly',
 		defineExpose: 'readonly',
-		withDefaults: 'readonly'
+		withDefaults: 'readonly',
+		ElMessage: 'readonly',
+		ElMessageBox: 'readonly',
+		ElLoading: 'readonly'
 	}
 }

@@ -3,7 +3,7 @@ module.exports = {
 	tabWidth: 2, //tab是空格的情况下，是几个空格
 	jsxSingleQuote: true,
 	jsxBracketSameLine: true,
-	printWidth: 100,
+	printWidth: 80,
 	singleQuote: true,
 	semi: false,
 	trailingComma: 'none',
