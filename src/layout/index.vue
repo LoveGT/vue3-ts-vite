@@ -6,7 +6,7 @@
 	>
 		<Sidebar class="sidebar-container"></Sidebar>
 		<div class="main-container" :class="{ hasTagsView: needTagsView }">
-			<AppMain class="baseBg"></AppMain>
+			<AppMain class="bg-gray-100"></AppMain>
 			<right-panel size="300px" direction="rtl">
 				<settings></settings>
 			</right-panel>
@@ -30,4 +30,17 @@ const needTagsView = computed(() => tagsView)
 const classObj = ref('')
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.app-wrapper {
+	position: relative;
+	height: 100%;
+	width: 100%;
+	.main-container {
+		// min-height: 100%;
+		height: calc(100% - 60px);
+		transition: margin-left 0.28s;
+		// margin-left: $sideBarWidth;
+		position: relative;
+	}
+}
+</style>

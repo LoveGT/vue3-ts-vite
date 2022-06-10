@@ -9,6 +9,8 @@ import { viteMockServe } from 'vite-plugin-mock'
 import { createSvgIconsPlugin } from 'vite-plugin-svg-icons'
 import path from 'path'
 
+import VueSetupExtend from 'vite-plugin-vue-setup-extend' //帮助setup页面命名
+
 //@ts-ignore
 import { resolve } from 'path'
 const pathResolve = (dir: string) => resolve(__dirname, dir)
@@ -69,13 +71,13 @@ export default ({ mode }) =>
 			viteMockServe({
 				mockPath: '/src/mock',
 				localEnabled: true
-			})
+			}),
+			VueSetupExtend()
 		],
 		css: {
 			preprocessorOptions: {
 				scss: {
-					additionalData2: `@use "@/assets/styles/element-ui.scss" as *;`,
-					additionalData: '@import "@/assets/styles/main.scss";'
+					additionalData: `@use "@/assets/styles/element-ui.scss" as *;`
 				}
 			}
 		}

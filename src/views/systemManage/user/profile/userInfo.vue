@@ -1,4 +1,4 @@
-<template>
+<!-- <template>
 	<el-form ref="userRef" :model="user" :rules="rules" label-width="80px">
 		<el-form-item label="用户昵称" prop="nickName">
 			<el-input v-model="user.nickName" maxlength="30" />
@@ -67,4 +67,4 @@ function submit() {
 function close() {
 	proxy.$tab.closePage()
 }
-</script>
+</script> -->

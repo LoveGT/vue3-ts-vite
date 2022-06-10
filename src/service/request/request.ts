@@ -2,8 +2,11 @@ import axios from 'axios'
 import type { AxiosInstance } from 'axios'
 import type { HyRequsetConfig, HYRequestInterceptor } from './types'
 
-import { ElLoading } from 'element-plus'
+import { ElLoading, ElMessageBox, ElMessage } from 'element-plus'
 import { LoadingInstance } from 'element-plus/lib/components/loading/src/loading'
+
+import { useLoginStore } from '@/store/modules/login/login'
+import errorCode from '@/utils/errorCode'
 
 const DEFAULT_LOADING = true
 
@@ -48,20 +51,64 @@ class HyRequset {
 
 		this.instance.interceptors.response.use(
 			(response) => {
+				const loginStore = useLoginStore() //获取login-pinia
+				// 未设置状态码则默认成功状态
+				const code = response.data.code || 200
+				// 获取错误信息
+				const msg = errorCode[code] || response.data.msg || errorCode['default']
+
 				this.loading?.close()
+
 				const data = response.data
-				if (data?.returnCode === '-1001') {
-					console.log('请求失败，错误信息')
+				// if (data?.returnCode === '-1001') {
+				// 	console.log('请求失败，错误信息')
+				// }
+				if (data.code === 401) {
+					ElMessageBox.confirm(
+						'登录状态已过期，你可以继续留在该页面，或者重新登录',
+						'系统提示',
+						{
+							confirmButtonText: '重新登录',
+							cancelButtonText: '取消',
+							type: 'warning'
+						}
+					).then(() => {
+						loginStore.logoutResult(() => {
+							location.href = '/index'
+						})
+					})
+					return Promise.reject('无效的会话，或者会话已过期，请重新登录。')
+				} else if (code === 500) {
+					ElMessage({
+						message: msg,
+						type: 'error'
+					})
+					return Promise.reject(new Error(msg))
 				} else {
-					return data
+					// return data
+					return Promise.resolve(data)
 				}
 			},
 			(error) => {
 				this.loading?.close()
-				if (error.response.status === 404) {
-					console.log('404错误')
+				let { message } = error
+				if (message === 'Network Error') {
+					message = '后端接口连接异常'
+				} else if (message.includes('timeout')) {
+					message = '系统接口请求超时'
+				} else if (message.includes('Request failed with status code')) {
+					message = '系统接口' + message.substr(message.length - 3) + '异常'
 				}
-				return error
+				ElMessage({
+					message: message,
+					type: 'error',
+					duration: 5 * 1000
+				})
+				return Promise.reject(error)
+				// if (error.response.status === 404) {
+				// 	console.log('404错误')
+				// }
+				// return error
 			}
 		)
 	}

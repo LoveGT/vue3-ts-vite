@@ -1,6 +1,6 @@
 <template>
 	<div class="login-panel">
-		<h2 class="title">Bison管理系统平台</h2>
+		<h2 class="title font-bold text-2xl mb-8">Bison管理系统平台</h2>
 		<el-tabs v-model="currentTab" type="border-card" stretch>
 			<el-tab-pane name="account">
 				<template #label>

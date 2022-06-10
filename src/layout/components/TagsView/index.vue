@@ -2,7 +2,7 @@
 	<div
 		id="tags-view-container"
 		ref="tagsViewRef"
-		class="tags-view-container border bg-dark-500 h-10 leading-10 pl-2"
+		class="tags-view-container border bg-dark-500 h-10 leading-10 pl-2 bg-white"
 	>
 		<scroll-pane
 			ref="scrollPaneRef"

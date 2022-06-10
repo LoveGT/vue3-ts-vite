@@ -86,7 +86,7 @@ export const useLoginStore = defineStore('login', {
 			return new Promise((resolve, reject) => {
 				logoutRequest()
 					.then((logoutResult) => {
-						console.log(logoutResult)
+						// console.log(logoutResult)
 						removeToken()
 						resolve(logoutResult)
 					})

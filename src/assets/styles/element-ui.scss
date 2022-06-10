@@ -1,7 +1,31 @@
-@forward 'element-plus/theme-chalk/src/common/var.scss' with (
-	$colors: (
-		'primary': (
-			'base': green
-		)
-	)
-);
+// @forward 'element-plus/theme-chalk/src/common/var.scss' with (
+// 	$colors: (
+// 		'primary': (
+// 			'base': green
+// 		)
+// 	)
+// );
+.inner-table .el-table__body-wrapper {
+  border: 1px solid red;
+}
+
+/* 修改表格的滚动条*/
+.inner-table .el-table__body-wrapper::-webkit-scrollbar {
+  width: 15px;
+  height: 10px;
+}
+
+/* 表格滚动条的滑块*/
+.inner-table .el-table__body-wrapper::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
+  // background: #ccc;
+  background: #3973fe;
+}
+
+.inner-table .el-table__body-wrapper::-webkit-scrollbar-track {
+  /*滚动条里面轨道*/
+  box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  background: #e5e5e5;
+}

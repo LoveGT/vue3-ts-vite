@@ -5,7 +5,7 @@
 			<div class="theme-change flex my-10">
 				<div
 					class="theme-change-item mr-10 relative"
-					@click="handleTheme('theme-dark')"
+					@click="handleSideTheme('theme-dark')"
 				>
 					<img
 						src="@/assets/images/dark.svg"
@@ -37,7 +37,7 @@
 				</div>
 				<div
 					class="theme-change-item relative"
-					@click="handleTheme('theme-light')"
+					@click="handleSideTheme('theme-light')"
 				>
 					<img
 						src="@/assets/images/light.svg"
@@ -77,6 +77,7 @@
 					inactive-value="theme-dark"
 					active-color="#13ce66"
 					inactive-color="#ff4949"
+					@change="handleChangeSkin"
 				></el-switch>
 				<span>{{ skinTheme }}</span>
 			</div>
@@ -139,14 +140,38 @@ const { tagsView, fixedHeader, sidebarLogo, sideTheme, skinTheme } =
 	storeToRefs(settingsStore)
 const theme = computed(() => settingsStore.theme)
 
-const handleTheme = (sideTheme: 'theme-light' | 'theme-dark') => {
+const handleSideTheme = (sideTheme: 'theme-light' | 'theme-dark') => {
 	settingsStore.changeSettings('sideTheme', sideTheme)
 }
 
 const handleThemeChange = (themeColor: string) => {
 	settingsStore.changeSettings('theme', themeColor)
 }
+//换肤功能
+const handleChangeSkin = (skinTheme: 'theme-light' | 'theme-dark') => {
+	settingsStore.changeSettings('skinTheme', skinTheme)
+	window.localStorage.setItem('skinTheme', skinTheme)
+	const htmlRoot = document.getElementById('htmlRoot')
+	if (htmlRoot) {
+		switch (skinTheme) {
+			case 'theme-light':
+				htmlRoot.className = 'theme-light'
+				// htmlRoot?.classList.add('theme-light')
+				// htmlRoot?.classList.remove('theme-dark')
+				break
+			case 'theme-dark':
+				htmlRoot.className = 'theme-dark'
+				// htmlRoot?.classList.add('theme-dark')
+				// htmlRoot?.classList.remove('theme-light')
+				break
 
+			default:
+				console.log('default')
+				htmlRoot.className = 'theme-default'
+				break
+		}
+	}
+}
 const saveSetting = () => {
 	console.log('baocun')
 }

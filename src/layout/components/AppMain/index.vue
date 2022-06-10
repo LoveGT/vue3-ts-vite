@@ -3,7 +3,7 @@
 		<div class="tabsTop">
 			<tags-view v-if="needTagsView" />
 		</div>
-		<router-view v-slot="{ Component, route }" class="p-3">
+		<router-view v-slot="{ Component, route }" class="content-container">
 			<transition name="fade-transform" mode="out-in">
 				<keep-alive :include="cachedViews">
 					<component :is="Component" :key="route.path" />
@@ -35,8 +35,8 @@ const { cachedViews } = storeToRefs(tagsViewStore)
 <style lang="scss" scoped>
 .app-main {
 	/* 50= navbar  50  */
-	// min-height: calc(100vh - 50px);
-	min-height: 100vh;
+	// min-height: calc(100vh - 60px);
+	// min-height: 100vh;
 	width: 100%;
 	position: relative;
 	overflow: hidden;
@@ -48,8 +48,18 @@ const { cachedViews } = storeToRefs(tagsViewStore)
 
 .hasTagsView {
 	.app-main {
-		/* 84 = navbar + tags-view = 50 + 34 */
-		min-height: calc(100vh - 84px);
+		/* 84 = navbar + tags-view = 57 + 40 */
+		// min-height: calc(100vh - 97px);
+		height: 100%;
+		display: flex;
+		flex-direction: column;
+		.content-container {
+			position: absolute;
+			top: 40px;
+			bottom: 0;
+			left: 0;
+			right: 0;
+		}
 	}
 
 	.fixed-header + .app-main {

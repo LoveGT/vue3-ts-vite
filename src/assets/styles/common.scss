@@ -1,0 +1,40 @@
+// 全局样式
+
+#app-container {
+	height: 100%;
+	width: 100%;
+	overflow: hidden;
+  .content-container:not(.dashboard-container){
+    display: flex;
+    flex-direction: column;
+  }
+	.content-container {
+		height: 100%;
+		width: 100%;
+    .form-container {
+      margin: 10px 0;
+      display: flex;
+      // justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+      .el-form-item {
+        margin-bottom: 5px;
+        margin-top: 5px;
+      }
+    }
+    .table-container {
+      flex: 1;
+      position: relative;
+      .inner-table {
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+      }
+    }
+	}
+  // 字典管理页面
+	.dict-container {
+	}
+}

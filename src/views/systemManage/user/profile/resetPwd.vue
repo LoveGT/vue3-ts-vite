@@ -1,4 +1,4 @@
-<template>
+<!-- <template>
 	<el-form ref="pwdRef" :model="user" :rules="rules" label-width="80px">
 		<el-form-item label="旧密码" prop="oldPassword">
 			<el-input
@@ -75,4 +75,4 @@ function submit() {
 function close() {
 	proxy.$tab.closePage()
 }
-</script>
+</script> -->

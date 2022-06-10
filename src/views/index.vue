@@ -1,11 +1,9 @@
 <template>
-	<div>
+	<div class="dashboard-container">
+		<p class="text-skin-base">全局换肤测试</p>
 		<el-button type="primary" @click="handleClick">{{
 			$t('home.title')
 		}}</el-button>
-		<el-button type="primary">{{ $t('home.test') }}</el-button>
-		<el-button type="primary" @click="handleCode"> 获取code </el-button>
-		<el-button type="primary" @click="handleLogin"> 获取登录 </el-button>
 		<!-- tailWindcss换肤功能测试 -->
 		<div class="min-h-screen bg-white">
 			<div class="fu">
@@ -25,40 +23,7 @@
 			</div>
 			<h1 class="text-lg">tailWindcss换肤功能测试</h1>
 			<ul class="p-10 space-y-10">
-				<!-- <li>
-					<a class="text-white">
-						<article
-							class="relative flex items-center transition-transform transform group"
-						>
-							<div
-								class="flex flex-col flex-grow py-8 space-y-4 text-base rounded px-8 shadow-md"
-							>
-								<div class="flex flex-row justify-between">
-									<h3 class="text-xl text-skin-base font-bold">
-										useEffect 完整指南
-									</h3>
-									<span>2020-06-08</span>
-								</div>
-								<p class="leading-8 text-skin-muted">
-									I was running into this just a couple days ago! What a perfect
-									timing for this tutorial. Thank you Tailwind Labs for these
-									videos. Please, keep coming up with high-quality materials
-									like this.
-								</p>
-								<a
-									class="w-40 m-auto bg-skin-button-accent text-skin-inverted hover:bg-skin-button-accent-hover flex items-center justify-center py-3 border font-medium rounded-md shadow-sm sm:px-8"
-									>get started</a
-								>
-								<a
-									href=""
-									class="w-40 m-auto bg-skin-button-muted text-white flex items-center justify-center py-3 border font-medium rounded-md shadow-sm sm:px-8 hover:bg-opacity-70"
-									>Live deno</a
-								>
-							</div>
-						</article>
-					</a>
-				</li> -->
-				<!-- <li class="theme-dark">
+				<li :class="skinTheme">
 					<a class="text-white">
 						<article
 							class="relative flex items-center transition-transform transform group"
@@ -68,7 +33,7 @@
 							>
 								<div class="flex flex-row justify-between">
 									<h3 class="text-xl text-skin-base font-bold">
-										useEffect 完整指南
+										useEffect 完整指南{{ skinTheme }}
 									</h3>
 									<span>2020-06-08</span>
 								</div>
@@ -83,14 +48,80 @@
 									>get started</a
 								>
 								<a
-									href=""
 									class="w-40 m-auto bg-skin-button-muted text-white flex items-center justify-center py-3 border font-medium rounded-md shadow-sm sm:px-8 hover:bg-opacity-70"
+									@click="getUserList"
 									>Live deno</a
 								>
 							</div>
 						</article>
 					</a>
-				</li> -->
+				</li>
+				<li :class="skinTheme">
+					<a class="text-white">
+						<article
+							class="relative flex items-center transition-transform transform group"
+						>
+							<div
+								class="flex flex-col flex-grow py-8 space-y-4 text-base rounded px-8 shadow-md bg-gradient-to-br from-skin-hue via-skin-hue to-transparent opacity-90"
+							>
+								<div class="flex flex-row justify-between">
+									<h3 class="text-xl text-skin-base font-bold">
+										useEffect 完整指南{{ skinTheme }}
+									</h3>
+									<span>2020-06-08</span>
+								</div>
+								<p class="leading-8 text-skin-muted">
+									I was running into this just a couple days ago! What a perfect
+									timing for this tutorial. Thank you Tailwind Labs for these
+									videos. Please, keep coming up with high-quality materials
+									like this.
+								</p>
+								<a
+									class="w-40 m-auto bg-skin-button-accent text-skin-inverted hover:bg-skin-button-accent-hover flex items-center justify-center py-3 border font-medium rounded-md shadow-sm sm:px-8"
+									>get started</a
+								>
+								<a
+									class="w-40 m-auto bg-skin-button-muted text-white flex items-center justify-center py-3 border font-medium rounded-md shadow-sm sm:px-8 hover:bg-opacity-70"
+									@click="getUserList"
+									>Live deno</a
+								>
+							</div>
+						</article>
+					</a>
+				</li>
+				<li :class="skinTheme">
+					<a class="text-white">
+						<article
+							class="relative flex items-center transition-transform transform group"
+						>
+							<div
+								class="flex flex-col flex-grow py-8 space-y-4 text-base rounded px-8 shadow-md bg-gradient-to-br from-skin-hue via-skin-hue to-transparent opacity-90"
+							>
+								<div class="flex flex-row justify-between">
+									<h3 class="text-xl text-skin-base font-bold">
+										useEffect 完整指南{{ skinTheme }}
+									</h3>
+									<span>2020-06-08</span>
+								</div>
+								<p class="leading-8 text-skin-muted">
+									I was running into this just a couple days ago! What a perfect
+									timing for this tutorial. Thank you Tailwind Labs for these
+									videos. Please, keep coming up with high-quality materials
+									like this.
+								</p>
+								<a
+									class="w-40 m-auto bg-skin-button-accent text-skin-inverted hover:bg-skin-button-accent-hover flex items-center justify-center py-3 border font-medium rounded-md shadow-sm sm:px-8"
+									>get started</a
+								>
+								<a
+									class="w-40 m-auto bg-skin-button-muted text-white flex items-center justify-center py-3 border font-medium rounded-md shadow-sm sm:px-8 hover:bg-opacity-70"
+									@click="getUserList"
+									>Live deno</a
+								>
+							</div>
+						</article>
+					</a>
+				</li>
 				<li :class="skinTheme">
 					<a class="text-white">
 						<article
@@ -178,14 +209,7 @@ const handleClick = () => {
 </script>
 
 <style lang="scss" scoped>
-// .fu {
-// 	background: #ff00ff;
-// 	width: 100px;
-// 	height: 200px;
-// 	.test {
-// 		padding-bottom: 20px;
-// 		color: #6366f1;
-// 		// padding: 100%;
-// 	}
-// }
+.dashboard-container {
+	overflow: auto;
+}
 </style>
